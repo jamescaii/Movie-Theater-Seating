@@ -9,10 +9,13 @@ def test_check_first_open():
     thea2 = Theater(3, 5)
     thea2.check_first_open("R001", 4)
     assert thea2.seating == [["f","f","f","f","f"],["f","f","f","f","e"],["e","e","e","e","e"]]
+    # tests for when there is one open seat left in a row but more people in the group
     thea2.check_first_open("R002", 3)
     assert thea2.seating == [["f","f","f","f","f"],["f","f","f","f","e"],["f","f","f","f","f"]]
+    # tests for one open seat that is not in order and at the end of a row
     thea2.check_first_open("R003", 1)
     assert thea2.seating == [["f","f","f","f","f"],["f","f","f","f","f"],["f","f","f","f","f"]]
+    # tests for no seats left
     assert thea2.check_first_open("R004", 1) == 0, "Should be 0"
     assert thea2.seating == [["f","f","f","f","f"],["f","f","f","f","f"],["f","f","f","f","f"]]
     #tests that the function works correctly where there are too many people for one row

@@ -12,6 +12,7 @@ python3 unitTests.py. This program will output "All tests passed" if all tests h
 Assumptions: 
 1. In the input file, the first reservations are appear first in the file.
 2. The customers want to sit at the front of the theater.
+3. No reservation will have zero people
 
 How we maximize customer satisfication: 
 1. The first customers to reserve get seats at the front of the theater.

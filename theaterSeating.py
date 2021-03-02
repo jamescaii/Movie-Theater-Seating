@@ -10,6 +10,7 @@ class Theater:
         self.num_dict = {0:"A", 1:"B", 2:"C", 3:"D", 4:"E", 5:"F", 6:"G", 7:"H", 8:"I", 9:"J"}
         self.reserved = {}
 
+    # this method checks the seats for an consecutive number of empty seats that will fit the given amount of people
     def check_first_open(self, rev, num_people):
         # loops through all of the seats
         for i in range(len(self.seating)):
@@ -41,10 +42,10 @@ class Theater:
                     return 1
         return 0
 
+    # this method finds the first open seats and allots it to the given number of people.
     def autofill(self, rev, num_people):
         seating_list = []
         ppl = num_people
-
         for i in range(len(self.seating)):
             for j in range(len(self.seating[i])):
                 # checks to see if the given seat is avaliable 
@@ -68,7 +69,7 @@ class Theater:
 
     def main(self):
         if len(sys.argv) != 2:
-            print("Error with loading file")
+            print("Incorrect number of arguments for loading file")
         else:
             # gets the filepath from the command line
             filepath = sys.argv[1]
@@ -86,7 +87,8 @@ class Theater:
                     if self.autofill(d, int(dic[d])) == 0:
                         print("Unable to add anymore people into the theater")
 
-            text_file = open("output4.txt", "w")
+            # writes the output to a file
+            text_file = open("output3.txt", "w")
             for r in self.reserved:
                 st = ""
                 for k in range(len(self.reserved[r])):
@@ -96,7 +98,7 @@ class Theater:
                         st = st + self.reserved[r][k]
                 text_file.write(r + " " + st + "\n")
             text_file.close()
-            print(str(pathlib.Path().absolute()) + "/output4.txt")
+            print(str(pathlib.Path().absolute()) + "/output3.txt")
 
 if __name__ == '__main__':
     thea = Theater(10, 20)
